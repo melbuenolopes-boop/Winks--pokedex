@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #0b1015; /* Fundo escuro */
+  color: #ffffff;
+  padding-bottom: 40px;
+}
+
+/* ================= CABEÇALHO E LOGO ================= */
+.header-home {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #111820;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 40px;
+}
+
+.header-home h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* Cores do Título */
+.poke-white { color: #ffffff; }
+.dex-green { color: #10b981; }
+
+/* ================= BARRA DE BUSCA E BOTÕES DO TOPO ================= */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  background-color: #0b1015;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+.search-input:focus { border-color: #2563eb; }
+
+/* Quadrados de botão Azuis */
+.btn-action {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-blue {
+  background-color: #1e293b; /* Azul escuro igual ao seu print */
+  color: #cbd5e1;
+}
+
+.btn-blue:hover {
+  background-color: #27364d;
+  color: #ffffff;
+}
+
+/* Quando o filtro de favoritos estiver ativado, ele fica verde para chamar atenção */
+.btn-action.active-filter {
+  background-color: #10b981; 
+  color: #111820;
+}
+
+/* ================= GRID E CARDS ================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pokedex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 20px;
+  color: #a0a0a0;
+  grid-column: 1 / -1;
+  padding: 40px;
+}
+
+.poke-card {
+  background-color: #111820;
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  border: 1px solid #1e293b;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poke-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: #27364d;
+}
+
+.poke-img {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.4)); 
+}
+
+.poke-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* REALCEI ESSAS FONTES - Deixei muito mais claras e visíveis */
+.poke-type {
+  font-size: 14px;
+  color: #cbd5e1; /* Cinza bem clarinho */
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.poke-stats {
+  font-size: 14px;
+  color: #cbd5e1; /* Cinza bem clarinho */
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Botão Favoritar do Card */
+.btn-fav {
+  width: 100%;
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-fav:hover { background-color: #27364d; color: #ffffff; }
+
+/* Quando o Pokémon for favoritado */
+.btn-fav.active {
+  background-color: #10b981;
+  color: #0b1015;
+}
+.btn-fav.active:hover { background-color: #059669; }
+
+/* ================= PAGINAÇÃO ================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #1e293b;
+}
+
+.btn-page {
+  background-color: #1e293b;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-page:hover:not(:disabled) { background-color: #2563eb; }
+.btn-page:disabled { opacity: 0.4; cursor: not-allowed; }
+
+#page-info {
+  font-size: 16px;
+  font-weight: 600;
+  color: #94a3b8;
+}
