@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Web</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="img/logopokedex.png">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="header-home">
+    
+    <!-- Nome com Poké Branco e Dex Verde -->
+    <h1>
+      <img src="img/logopokedex.png" alt="Logo da Pokédex" class="logo">
+      <span><span class="poke-white">Poké</span><span class="dex-green">Dex</span></h1>
+    <!-- Barra e Botões Azuis Alinhados no Topo -->
+    <div class="search-container">
+      <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome ou número...">
+      <button id="btn-search" class="btn-action btn-blue"> Buscar</button>
+      <button id="btn-show-favs" class="btn-action btn-blue">Meus Favoritos</button>
+    </div>
+  </header>
+
+  <!-- LISTA DE POKÉMON -->
+  <main class="container">
+    <div id="pokedex-grid" class="pokedex-grid">
+      <div id="loading" class="loading">Iniciando a Pokédex...</div>
+    </div>
+
+    <!-- PAGINAÇÃO -->
+    <div class="pagination">
+      <button id="btn-prev" class="btn-page">Anterior</button>
+      <span id="page-info">Página 1 de 2</span>
+      <button id="btn-next" class="btn-page">Próxima</button>
+    </div>
+  </main>
+
+</body>
+</html>
