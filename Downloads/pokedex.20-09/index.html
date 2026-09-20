@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Web</title>
+  
+  <link rel="icon" type="image/x-icon" href="img/logopokedex.png">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header class="header-home">
+    <div class="header-wrapper">
+      
+      <div class="header-top">
+        <div class="logo-area">
+          <img src="img/logopokedex.png" alt="Pokéball" class="logo">
+          <h1><span class="poke-white">Poké</span><span class="dex-red">Dex</span></h1>
+        </div>
+        
+        <div class="nav-buttons">
+          <button class="btn-nav"><i class="fas fa-home"></i> Início</button>
+          <button class="btn-nav"><i class="fas fa-heart"></i> Meus Favoritos</button>
+        </div>
+      </div>
+    
+      <div class="search-area">
+        <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome ou ID......">
+        <button id="btn-search" class="btn-search-action">Buscar</button>
+      </div>
+
+    </div>
+  </header>
+ 
+  <main class="container">
+   
+    <div id="pokemon-container"></div>
+  </main>
+
+ 
+  <div id="pokemon-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <button id="close-modal" class="btn-close"><i class="fas fa-times"></i></button>
+      <div id="modal-details-container"></div>
+    </div>
+  </div>
+    
+  <script src="script.js"></script>
+</body>
+</html>
