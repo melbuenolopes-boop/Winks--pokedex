@@ -1,0 +1,412 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #05070a;
+  color: #ffffff;
+  padding-bottom: 60px;
+}
+
+.header-home {
+  background-color: #05070a;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 40px;
+  padding: 25px 0;
+}
+
+.header-wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.logo-area h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.poke-white { color: #ffffff; }
+.dex-red { color: #ef4444; }
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-nav {
+  background-color: #1a202c;
+  color: #e2e8f0;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-nav:hover {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+.search-area {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.search-input {
+  flex-grow: 1; /* Faz a barra de pesquisa ocupar o espaço proporcionalmente */
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  background-color: #1a202c;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2px #7c3aed;
+}
+
+.btn-search-action {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 0 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-search-action:hover {
+  background-color: #ef4444;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#pokemon-container {
+  max-width: 940px;   
+  margin: 0 auto;      
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.poke-card {
+  width: 220px;
+  background-color: #11151c;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.poke-card:hover {
+  transform: translateY(-4px);
+  border-color: #2e3d55;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.card-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.card-icons span { cursor: pointer; }
+.card-icons i { font-size: 13px; transition: 0.2s; }
+.card-icons span:hover i { color: #fff; }
+.card-icons .heart-active { color: #ff8c00 !important; }
+
+.poke-id { font-weight: 700; letter-spacing: 0.5px; }
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.poke-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.poke-info-container {
+  width: 100%;
+  text-align: center;
+}
+
+.poke-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.types-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.type-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+/* Cores específicas dos tipos */
+.type-grass { background-color: #78C850; color: #111; }
+.type-poison { background-color: #A040A0; }
+.type-fire { background-color: #F08030; }
+.type-water { background-color: #6890f0; }
+.type-flying { background-color: #A890F0; }
+.type-electric { background-color: #F8D030; color: #111; }
+.type-normal { background-color: #A8A878; color: #111; }
+
+/* Botão Favoritar Inferior */
+.btn-fav {
+  width: 100%;
+  background-color: transparent;
+  color: #94a3b8;
+  border: 1px solid #1e293b;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-fav:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.btn-fav.active {
+  background-color: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(5, 7, 10, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 850px;
+  position: relative;
+  margin: auto;
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-close:hover { color: #fff; }
+
+.detail-card {
+  background-color: #11151c;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin-bottom: 20px;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.profile-image img {
+  width: 100%;
+  max-width: 300px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.profile-icons {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.profile-icons i:hover {
+  color: #fff;
+}
+
+.profile-info h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.profile-info .types-wrapper { margin-bottom: 20px; justify-content: flex-start; }
+.poke-desc { color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+
+.measurements { display: flex; gap: 15px; }
+.measure-box {
+  background-color: #05070a;
+  border-radius: 10px;
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid #1e293b;
+}
+
+.measure-label { color: #64748b; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.measure-val { color: #ffffff; font-size: 16px; font-weight: 700; }
+
+.stats-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 25px; }
+.stats-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 30px;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 10px;
+}
+
+.stats-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.stat-label { color: #94a3b8; font-size: 13px; }
+.stats-bar-container { background: #1e293b; border-radius: 4px; height: 6px; width: 100%; }
+.stats-bar-fill { height: 100%; border-radius: 4px; }
+.stat-val { color: #ffffff; font-weight: 700; font-size: 14px; text-align: right; }
+
+@media (max-width: 768px) {
+  
+    .header-top { flex-direction: column; gap: 20px; }
+    
+    .search-area { 
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        width: 100%; 
+        padding: 0 15px; 
+        box-sizing: border-box; 
+        gap: 12px;
+    }
+    
+    .search-area input { 
+        width: 90% !important; 
+        height: 45px;
+        box-sizing: border-box !important;
+    }
+
+    .search-area button { 
+        width: 90% !important; 
+        height: 45px;
+        box-sizing: border-box !important;
+    }
+  
+    #pokemon-container { padding: 0 15px; }
+    .poke-card { width: 100%; max-width: 100%; }
+
+    .profile-card { grid-template-columns: 1fr; text-align: center; }
+    .profile-info .types-wrapper { justify-content: center; }
+    .profile-header { justify-content: center; }
+    .measurements { flex-direction: column; }
+}
