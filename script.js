@@ -66,8 +66,10 @@ const modal = document.getElementById('pokemon-modal');
 const modalDetails = document.getElementById('modal-details-container');
 const closeModalBtn = document.getElementById('close-modal');
 
-let meusFavoritos = [];
+let meusFavoritos = carregarFavoritos();
+let telaAtual = 'inicio';
 
+//Parte do localstorage e tela de favoritos inicio
 function alternarFavorito(event, id) {
     event.stopPropagation(); 
 
@@ -80,8 +82,33 @@ function alternarFavorito(event, id) {
     renderizarTelaInicial(listaPokemons);
 }
 
+function carregarFavoritos() {
+    const salvo = localStorage.getItem('favoritos');
+    return salvo ? JSON.parse(salvo) : [];
+}
+
+function salvarFavoritos() {
+    localStorage.setItem('favoritos', JSON.stringify(meusFavoritos));
+}
+
+function atualizarTela() {
+    if (telaAtual === 'favoritos') {
+        const apenasFavoritos = listaPokemons.filter(p => meusFavoritos.includes(p.id));
+        renderizarTelaInicial(apenasFavoritos);
+    }else{
+        renderizarTelaInicial(listaPokemons);
+    }
+}
+//Parte do localstorage e tela de favoritos FIM
+
 function renderizarTelaInicial(lista) {
-    containerPrincipal.innerHTML = ''; 
+    
+    containerPrincipal.innerHTML = '';
+
+    if (lista.length === 0) {
+    containerPrincipal.innerHTML = '<p class="">Nenhum Pokémon favoritado ainda.</p>';
+    return;
+    } 
 
     lista.forEach(pokemon => {
         const idFormatado = String(pokemon.id).padStart(3, '0');
