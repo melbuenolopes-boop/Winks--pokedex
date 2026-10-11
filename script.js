@@ -70,18 +70,17 @@ let meusFavoritos = carregarFavoritos();
 let telaAtual = 'inicio';
 
 //Parte do localstorage e tela de favoritos inicio
-function alternarFavorito(event, id) {
-    event.stopPropagation(); 
 
-    if (meusFavoritos.includes(id)) {
-        meusFavoritos = meusFavoritos.filter(favId => favId !== id);
-    } else {
-        meusFavoritos.push(id);
-    }
+
+document.getElementById('btn-inicio').onclick = () => {
+    telaAtual = 'inicio';
+    atualizarTela();
+    };
+document.getElementById('btn-favoritos').onclick = () => {
+    telaAtual = 'favoritos';
+    atualizarTela();
+    };
     
-    renderizarTelaInicial(listaPokemons);
-}
-
 function carregarFavoritos() {
     const salvo = localStorage.getItem('favoritos');
     return salvo ? JSON.parse(salvo) : [];
@@ -98,6 +97,21 @@ function atualizarTela() {
     }else{
         renderizarTelaInicial(listaPokemons);
     }
+    
+}
+
+function alternarFavorito(event, id) {
+    event.stopPropagation();
+
+    if (meusFavoritos.includes(id)) {
+        meusFavoritos = meusFavoritos.filter(favId => favId !== id);
+    } else {
+        meusFavoritos.push(id);
+    }
+
+    salvarFavoritos();
+    atualizarTela();
+
 }
 //Parte do localstorage e tela de favoritos FIM
 
