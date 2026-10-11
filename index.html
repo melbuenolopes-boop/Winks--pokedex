@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Web</title>
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <header class="header-home">
+        <div class="header-top">
+            <div class="logo-area">
+                <img src="img/logopokedex.png" alt="Logo Pokébola" class="logo">
+                <h1>
+                    <span class="poke-white">Poké</span><span class="dex-red">Dex</span>
+                </h1>
+            </div>
+            
+            <nav class="header-nav">
+                <button class="btn-action">Início</button>
+                <button id="btn-show-favs" class="btn-action">Meus Favoritos</button>
+            </nav>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome ou ID......">
+            <button id="btn-search" class="btn-action btn-red">Buscar</button>
+        </div>
+        
+    </header>
+
+    <main class="container">
+        
+        <div id="pokedex-grid" class="pokedex-grid">
+            <div id="loading" class="loading">Iniciando a Pokédex...</div>
+        </div>
+
+        <div class="pagination">
+            <button id="btn-prev" class="btn-page">Anterior</button>
+            <span id="page-info">Página 1 de 2</span>
+            <button id="btn-next" class="btn-page">Próxima</button>
+        </div>
+        
+    </main>
+
+</body>
+</html>

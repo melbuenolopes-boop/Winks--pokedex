@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Pokémon</title>
+  <link rel="stylesheet" href="css/style-detalhes.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="js/detalhes.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <button class="btn-back"><i class="ph ph-arrow-left"></i> Voltar à Pokédex</button>
+    <button class="btn-theme"><i class="ph ph-sun"></i></button>
+  </header>
+
+  <main class="pokemon-container" id="main-content" style="display: none;">
+    <!-- CARD 1: Info Principal -->
+    <section class="card hero-card">
+      <div class="pokemon-image-wrapper">
+        <img id="poke-img" src="" alt="Pokemon" class="pokemon-image">
+      </div>
+      <div class="pokemon-info">
+        <div class="info-header">
+          <span class="dex-number" id="poke-id"></span>
+        </div>
+        <h1 class="pokemon-name" id="poke-name"></h1>
+        <div class="types" id="poke-types"></div>
+        <p class="description" id="poke-desc"></p>
+        <div class="physical-stats">
+          <div class="stat-box"><i class="ph ph-ruler text-orange"></i><div><span class="stat-label">Altura</span><span class="stat-value" id="poke-height"></span></div></div>
+          <div class="stat-box"><i class="ph ph-barbell text-orange"></i><div><span class="stat-label">Peso</span><span class="stat-value" id="poke-weight"></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD 2: Stats -->
+    <section class="card stats-card">
+      <h2>Estatísticas básicas</h2>
+      <div id="poke-stats-container"></div>
+    </section>
+
+    <!-- CARD 3: Fraquezas e Resistências (Matemática real de tipos) -->
+    <section class="card type-compat-card">
+      <h2>Compatibilidade de tipos</h2>
+      <div class="compat-group">
+        <span class="compat-title" id="weakness-title">Fraco para</span>
+        <div class="compat-badges" id="poke-weaknesses"></div>
+      </div>
+      <div class="compat-group">
+        <span class="compat-title" id="resistance-title">Resistente a</span>
+        <div class="compat-badges" id="poke-resistances"></div>
+      </div>
+    </section>
+
+    <!-- CARD 4: Habilidades -->
+    <section class="card abilities-card">
+      <h2>Habilidades</h2>
+      <div class="abilities-grid" id="poke-abilities"></div>
+    </section>
+
+    <!-- CARD 5: Cadeia Evolutiva -->
+    <section class="card evolution-card">
+      <h2>Cadeia Evolutiva</h2>
+      <div class="evolution-row" id="evo-chain"></div>
+    </section>
+  </main>
+  <div id="loading-details" style="text-align:center; color:#fff; margin-top:50px;">Carregando dados profissionais...</div>
+</body>
+</html>
