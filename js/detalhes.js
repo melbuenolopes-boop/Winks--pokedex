@@ -35,7 +35,6 @@ if (!pokeId) window.location.href = 'index.html';
 
 async function loadPokemonDetails() {
   try {
-    
     const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
     const pokemon = await resPoke.json();
 
@@ -46,7 +45,6 @@ async function loadPokemonDetails() {
     renderStats(pokemon.stats);
     renderAbilities(pokemon.abilities);
 
-    await renderTypeCompatibilities(pokemon.types);
     await renderEvolutions(species.evolution_chain.url, pokemon.name);
 
     document.getElementById('loading-details').style.display = 'none';
@@ -111,58 +109,6 @@ function renderAbilities(abilities) {
       </div>
     `;
   });
-}
-
-// O MOTOR MATEMÁTICO DE FRAQUEZAS
-async function renderTypeCompatibilities(types) {
-  let damageMultiplier = {};
-  const allTypes = Object.keys(typeColors);
-  allTypes.forEach(t => damageMultiplier[t] = 1);
-
-  // Busca as regras de dano de CADA tipo que o Pokémon tem na API
-  for (let t of types) {
-    const res = await fetch(t.type.url);
-    const typeData = await res.json();
-    
-    typeData.damage_relations.double_damage_from.forEach(x => damageMultiplier[x.name] *= 2);
-    typeData.damage_relations.half_damage_from.forEach(x => damageMultiplier[x.name] *= 0.5);
-    typeData.damage_relations.no_damage_from.forEach(x => damageMultiplier[x.name] *= 0);
-  }
-
-  // Separa o que é fraqueza e o que é resistência
-  const weaknesses = Object.entries(damageMultiplier).filter(([type, mult]) => mult > 1);
-  const resistances = Object.entries(damageMultiplier).filter(([type, mult]) => mult < 1 && mult > 0);
-  const immunities = Object.entries(damageMultiplier).filter(([type, mult]) => mult === 0);
-
-  // Combina resistências e imunidades para exibição simplificada
-  const allResists = [...resistances, ...immunities];
-
-  document.getElementById('weakness-title').innerText = `Fraco para ( ${weaknesses.length} )`;
-  document.getElementById('resistance-title').innerText = `Resistente a ( ${allResists.length} )`;
-
-  const weakContainer = document.getElementById('poke-weaknesses');
-  const resContainer = document.getElementById('poke-resistances');
-
-  // Desenha os distintivos de Fraqueza
-  weaknesses.forEach(([type, mult]) => {
-    weakContainer.innerHTML += createBadgeHTML(type, mult, 'mult-red');
-  });
-
-  // Desenha os distintivos de Resistência/Imunidade
-  allResists.forEach(([type, mult]) => {
-    const multText = mult === 0 ? '0' : (mult === 0.5 ? '½' : '¼');
-    resContainer.innerHTML += createBadgeHTML(type, multText, 'mult-green');
-  });
-}
-
-function createBadgeHTML(type, multText, colorClass) {
-  const bg = typeColors[type];
-  const color = (type === 'electric' || type === 'ice' || type === 'grass' || type === 'fairy') ? '#111' : '#fff';
-  return `
-    <span class="type badge-container" style="background-color: ${bg}; color: ${color};">
-      ${typeNamesPt[type] || type} <span class="multiplier ${colorClass}">${multText}</span>
-    </span>
-  `;
 }
 
 // O MOTOR DA ÁRVORE DE EVOLUÇÃO
