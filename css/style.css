@@ -281,3 +281,53 @@ body {
   font-weight: 600;
   color: #94a3b8;
 }
+
+
+@media (max-width: 600px) {
+  
+  .header-top {
+    flex-direction: column !important; 
+    align-items: center !important;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+
+  .header-top nav, 
+  .header-top .menu-buttons { 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .search-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px;
+  }
+
+  #search-input, 
+  #btn-search, 
+  #btn-show-favs {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #pokedex-grid {
+    grid-template-columns: 1fr !important; 
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .pagination,
+  #pagination-container {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #btn-prev, 
+  #btn-next {
+    width: 100%; 
+  }
+}

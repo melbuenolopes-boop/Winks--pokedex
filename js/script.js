@@ -16,9 +16,9 @@ let allPokemons = [];
 let currentDisplayList = []; 
 let showingOnlyFavs = false; 
 
-// PASSO 1: PEGAR A LISTA DE NOMES RÁPIDO
+
 const fetchInitialList = async () => {
-  pokedexGrid.innerHTML = '<p class="loading">Iniciando a Pokédex...</p>';
+  pokedexGrid.innerHTML = '<p class="loading">Initializing the Pokédex...</p>';
   
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${TOTAL_POKEMONS}`);
   const data = await res.json();
@@ -35,7 +35,7 @@ const fetchInitialList = async () => {
 };
 
 const renderPage = async () => {
-  pokedexGrid.innerHTML = '<p class="loading">Carregando página...</p>';
+  pokedexGrid.innerHTML = '<p class="loading">Loading page...</p>';
   
   const totalPages = Math.ceil(currentDisplayList.length / ITEMS_PER_PAGE) || 1;
   
@@ -43,7 +43,7 @@ const renderPage = async () => {
   const pageItems = currentDisplayList.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   if (pageItems.length === 0) {
-    pokedexGrid.innerHTML = '<p class="loading">Nenhum Pokémon encontrado.</p>';
+    pokedexGrid.innerHTML = '<p class="loading">No Pokémon found.</p>';
     updatePaginationControls(totalPages);
     return;
   }
