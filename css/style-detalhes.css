@@ -281,47 +281,79 @@ body {
     margin-bottom: 30px; 
 }
 
+
 body.light-mode { 
-    background-color: #f2f2f2; 
-    color: #333333; 
+    background-color: #f1f5f9;
+    color: #0f172a; 
 }
 
 body.light-mode .card { 
     background-color: #ffffff; 
-    border: 1px solid #e0e0e0; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    border: 1px solid #e2e8f0; 
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06); 
+}
+
+body.light-mode .card:hover {
+    border-color: rgba(243, 156, 18, 0.5);
+}
+
+
+body.light-mode .description {
+    color: #475569;
+    font-weight: 500;
+}
+
+body.light-mode .dex-number {
+    color: #f39c12; 
+    font-weight: 700;
 }
 
 body.light-mode .stat-box, 
 body.light-mode .ability-box, 
 body.light-mode .evo-img-box { 
-    background-color: #f9f9f9; 
-    border: 1px solid #eeeeee; 
+    background-color: #f8fafc; 
+    border: 1px solid #cbd5e1; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .ability-box:hover,
+body.light-mode .evo-img-box:hover,
+body.light-mode .stat-box:hover {
+    border-color: #f39c12;
+    background-color: #fffbeb; 
+    transform: translateY(-3px);
+}
+
+body.light-mode .highlighted .evo-img-box { 
+    border: 2px solid #f39c12; 
+    background-color: rgba(243, 156, 18, 0.08); 
 }
 
 body.light-mode .stat-bar-bg { 
-    background-color: #e0e0e0; 
+    background-color: #e2e8f0; 
 }
 
-body.light-mode .multiplier { 
-    border-color: #ffffff; 
-}
-
-body.light-mode .btn-back, 
-body.light-mode .btn-theme, 
-body.light-mode .compat-title, 
 body.light-mode .stat-name { 
-    color: #666666; 
+    color: #475569; 
+    font-weight: 600;
 }
 
-body.light-mode .btn-back:hover, 
-body.light-mode .btn-theme:hover { 
-    color: #111111; 
+body.light-mode .btn-back { 
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+    color: #334155; 
+}
+
+body.light-mode .btn-back:hover { 
+    border-color: #f39c12;
+    color: #f39c12; 
 }
 
 body.light-mode .pokemon-image { 
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); 
+    
+    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.18)); 
 }
+
 
 @media (max-width: 768px) {
     .hero-card { 

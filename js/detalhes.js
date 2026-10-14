@@ -1,16 +1,9 @@
 const btnBack = document.querySelector('.btn-back');
-const btnTheme = document.querySelector('.btn-theme');
-const themeIcon = document.querySelector('.btn-theme i');
-
 btnBack.addEventListener('click', () => window.location.href = 'index.html');
 
-btnTheme.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  themeIcon.classList.replace(
-    document.body.classList.contains('light-mode') ? 'ph-sun' : 'ph-moon',
-    document.body.classList.contains('light-mode') ? 'ph-moon' : 'ph-sun'
-  );
-});
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+}
 
 const typeColors = {
   normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
@@ -18,14 +11,6 @@ const typeColors = {
   ground: '#E0C068', flying: '#A890F0', psychic: '#F85888', bug: '#A8B820',
   rock: '#B8A038', ghost: '#705898', dragon: '#7038F8', dark: '#705848',
   steel: '#B8B8D0', fairy: '#EE99AC'
-};
-
-const typeNamesPt = {
-  normal: 'Normal', fire: 'Fogo', water: 'Água', electric: 'Elétrico',
-  grass: 'Planta', ice: 'Gelo', fighting: 'Lutador', poison: 'Veneno',
-  ground: 'Terra', flying: 'Voador', psychic: 'Psíquico', bug: 'Inseto',
-  rock: 'Pedra', ghost: 'Fantasma', dragon: 'Dragão', dark: 'Sombrio',
-  steel: 'Aço', fairy: 'Fada'
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -72,7 +57,7 @@ function renderBasicInfo(pokemon, species) {
     span.className = 'type';
     span.style.backgroundColor = typeColors[t.type.name];
     span.style.color = (t.type.name === 'electric' || t.type.name === 'ice' || t.type.name === 'grass' || t.type.name === 'fairy') ? '#111' : '#fff';
-    span.innerText = typeNamesPt[t.type.name] || t.type.name;
+    span.innerText = t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1);
     typesContainer.appendChild(span);
   });
 }
@@ -101,11 +86,12 @@ function renderStats(stats) {
 
 function renderAbilities(abilities) {
   const container = document.getElementById('poke-abilities');
+  container.innerHTML = '';
   abilities.forEach(a => {
     container.innerHTML += `
       <div class="ability-box">
         <span class="ability-name" style="text-transform: capitalize;">${a.ability.name.replace('-', ' ')}</span>
-        ${a.is_hidden ? '<span class="ability-hidden">(Abilities hidden)</span>' : ''}
+        ${a.is_hidden ? '<span class="ability-hidden">(Hidden Ability)</span>' : ''}
       </div>
     `;
   });
@@ -116,19 +102,32 @@ async function renderEvolutions(url, currentName) {
   const evoData = await res.json();
   const chain = [];
   
-  // Navega pela árvore de evolução da API
-  let currentEvo = evoData.chain;
-  do {
-    const id = currentEvo.species.url.split('/').filter(Boolean).pop(); // Extrai o ID da URL da espécie
+  function extractChain(node) {
+    const id = node.species.url.split('/').filter(Boolean).pop();
+    const details = node.evolution_details[0];
+    
+    let triggerText = '';
+    if (details) {
+      if (details.min_level) triggerText = `Level ${details.min_level}`;
+      else if (details.item) triggerText = `Use ${details.item.name.replace('-', ' ')}`;
+      else if (details.min_happiness) triggerText = `Friendship`;
+      else triggerText = `Special`;
+    }
+
     chain.push({
-      name: currentEvo.species.name,
+      name: node.species.name,
       id: id,
-      level: currentEvo.evolves_to[0]?.evolution_details[0]?.min_level || '?'
+      trigger: triggerText
     });
-    currentEvo = currentEvo.evolves_to[0]; // Vai para a próxima evolução
-  } while (currentEvo && currentEvo.hasOwnProperty('evolves_to'));
+
+    node.evolves_to.forEach(nextNode => extractChain(nextNode));
+  }
+
+  extractChain(evoData.chain);
 
   const container = document.getElementById('evo-chain');
+  container.innerHTML = '';
+
   chain.forEach((stage, index) => {
     const isCurrent = stage.name === currentName;
     const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${stage.id}.png`;
@@ -136,8 +135,8 @@ async function renderEvolutions(url, currentName) {
     let html = `
       <div class="evo-stage ${isCurrent ? 'highlighted' : ''}" onclick="window.location.href='detalhes.html?id=${stage.id}'">
         <div class="evo-img-box"><img src="${imgUrl}" alt="${stage.name}"></div>
-        <span class="evo-name" style="text-transform: capitalize;">${stage.name}</span>
-        ${index > 0 ? `<span class="evo-level">Nível ${stage.level}</span>` : ''}
+        <span class="evo-name">${stage.name}</span>
+        ${stage.trigger ? `<span class="evo-level" style="text-transform: capitalize;">${stage.trigger}</span>` : ''}
       </div>
     `;
 

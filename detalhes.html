@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Details</title>
+  <title>Pokémon Details</title>
   <link rel="stylesheet" href="css/style-detalhes.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script src="js/detalhes.js" defer></script>
 </head>
 <body>
+
   <header class="header">
-    <button class="btn-back"><i class="ph ph-arrow-left"></i> Back to Pokedex</button>
-    <button class="btn-theme"><i class="ph ph-sun"></i></button>
+    <button class="btn-back"><i class="ph ph-arrow-left"></i> Back to Pokédex</button>
   </header>
 
   <main class="pokemon-container" id="main-content" style="display: none;">
@@ -28,14 +28,26 @@
         <div class="types" id="poke-types"></div>
         <p class="description" id="poke-desc"></p>
         <div class="physical-stats">
-          <div class="stat-box"><i class="ph ph-ruler text-orange"></i><div><span class="stat-label">Height</span><span class="stat-value" id="poke-height"></span></div></div>
-          <div class="stat-box"><i class="ph ph-barbell text-orange"></i><div><span class="stat-label">Weight</span><span class="stat-value" id="poke-weight"></span></div></div>
+          <div class="stat-box">
+            <i class="ph ph-ruler text-orange"></i>
+            <div>
+              <span class="stat-label">Height</span>
+              <span class="stat-value" id="poke-height"></span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <i class="ph ph-barbell text-orange"></i>
+            <div>
+              <span class="stat-label">Weight</span>
+              <span class="stat-value" id="poke-weight"></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="card stats-card">
-      <h2>Basic Statistics</h2>
+      <h2>Base Stats</h2>
       <div id="poke-stats-container"></div>
     </section>
 
@@ -48,7 +60,11 @@
       <h2>Evolution Chain</h2>
       <div class="evolution-row" id="evo-chain"></div>
     </section>
+
   </main>
-  <div id="loading-details" style="text-align:center; color:#fff; margin-top:50px;">Loading professional data...</div>
+
+  <div id="loading-details" style="text-align:center; color:#fff; margin-top:50px;">
+    Loading Pokémon data...
+  </div>
 </body>
 </html>
