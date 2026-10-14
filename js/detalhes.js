@@ -105,13 +105,12 @@ function renderAbilities(abilities) {
     container.innerHTML += `
       <div class="ability-box">
         <span class="ability-name" style="text-transform: capitalize;">${a.ability.name.replace('-', ' ')}</span>
-        ${a.is_hidden ? '<span class="ability-hidden">(Habilidade Oculta)</span>' : ''}
+        ${a.is_hidden ? '<span class="ability-hidden">(Abilities hidden)</span>' : ''}
       </div>
     `;
   });
 }
 
-// O MOTOR DA ÁRVORE DE EVOLUÇÃO
 async function renderEvolutions(url, currentName) {
   const res = await fetch(url);
   const evoData = await res.json();
@@ -142,7 +141,6 @@ async function renderEvolutions(url, currentName) {
       </div>
     `;
 
-    // Adiciona a setinha, menos no último Pokémon
     if (index < chain.length - 1) {
       html += `<div class="evo-arrow"><i class="ph ph-caret-right"></i></div>`;
     }
@@ -151,5 +149,4 @@ async function renderEvolutions(url, currentName) {
   });
 }
 
-// Dá a largada na página
 loadPokemonDetails();

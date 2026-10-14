@@ -106,7 +106,6 @@ body {
     margin-bottom: 32px; 
 }
 
-/* Caixas de Altura e Peso */
 .physical-stats { 
     display: flex; 
     gap: 16px; 
@@ -173,22 +172,6 @@ body {
     font-weight: 600; 
 }
 
-.compat-group { 
-    margin-bottom: 24px; 
-}
-
-.compat-title { 
-    display: block; 
-    color: #a0a0a0; 
-    margin-bottom: 16px; 
-    font-size: 14px; 
-}
-
-.compat-badges { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 16px; 
-}
 
 .badge-container { 
     position: relative; 
