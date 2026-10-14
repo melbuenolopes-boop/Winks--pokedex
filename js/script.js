@@ -58,7 +58,7 @@ const renderPage = async () => {
 };
 
 const updatePaginationControls = (totalPages) => {
-  pageInfo.innerText = `Página ${currentPage} de ${totalPages}`;
+  pageInfo.innerText = `Page ${currentPage} of ${totalPages}`;
 
   btnPrev.disabled = currentPage === 1;
   
@@ -94,23 +94,28 @@ const createPokemonCard = (pokemon) => {
   const isFav = favoritos.includes(pokemon.id);
 
   const pokemonEl = document.createElement('div');
-  pokemonEl.classList.add('pokemon-card'); // Usa a nova classe principal
+  pokemonEl.classList.add('pokemon-card'); 
   
+
   pokemonEl.innerHTML = `
     <span class="pokemon-id">#${idFormatado}</span>
+    
+    <!-- Novo botão de favorito flutuante no topo direito -->
+    <button class="btn-favorite ${isFav ? 'active' : ''}" title="Favorite">
+        <i class="${isFav ? 'ph-fill' : 'ph'} ph-heart"></i>
+    </button>
+
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png" alt="${nomeFormatado}" class="pokemon-image" loading="lazy">
     <h2 class="pokemon-name">${nomeFormatado}</h2>
     
     <div class="pokemon-types">
       ${typesHtml}
     </div>
-    
-    <button class="btn-favorite ${isFav ? 'active' : ''}">
-        ${isFav ? ' Favorite' : ' Favorite'}
-    </button>
   `;
 
   const btnFav = pokemonEl.querySelector('.btn-favorite');
+  const iconFav = btnFav.querySelector('i');
+
   btnFav.addEventListener('click', (e) => {
     e.stopPropagation(); 
     favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
@@ -118,12 +123,12 @@ const createPokemonCard = (pokemon) => {
     if (favoritos.includes(pokemon.id)) {
       favoritos = favoritos.filter(id => id !== pokemon.id);
       btnFav.classList.remove('active');
-      btnFav.innerText = '♡ Favorite';
-      if(showingOnlyFavs) aplicarFiltros(); 
+      iconFav.className = 'ph ph-heart'; // Coração vazado
+      if (showingOnlyFavs) aplicarFiltros(); 
     } else {
       favoritos.push(pokemon.id);
       btnFav.classList.add('active');
-      btnFav.innerText = '♥ Favorite';
+      iconFav.className = 'ph-fill ph-heart'; // Coração preenchido
     }
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
   });
@@ -172,3 +177,22 @@ btnShowFavs.addEventListener('click', () => {
 });
 
 fetchInitialList();
+
+const btnThemeHome = document.getElementById('btn-theme-home');
+
+if (btnThemeHome) {
+  const themeIconHome = btnThemeHome.querySelector('i');
+
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+    themeIconHome.className = 'ph ph-moon';
+  }
+
+  btnThemeHome.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    
+    themeIconHome.className = isLight ? 'ph ph-moon' : 'ph ph-sun';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+}

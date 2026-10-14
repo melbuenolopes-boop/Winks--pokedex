@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="pt-BR">
+<html lang="pt-en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
 
@@ -26,16 +27,16 @@
             </div>
             
             <nav class="header-nav">
-                <button class="btn-action">Início</button>
-                <button id="btn-show-favs" class="btn-action">My Favorites</button>
+                <button class="btn-action"><i class="ph ph-house"></i> Home</button>
+                <button id="btn-show-favs" class="btn-action"><i class="ph ph-heart"></i> My Favorites</button>
+                <button id="btn-theme-home" class="btn-action" title="Toggle Theme"><i class="ph ph-sun"></i></button>
             </nav>
         </div>
 
         <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Search by name or ID......">
-            <button id="btn-search" class="btn-action btn-red">Search</button>
-        </div>
-        
+            <input type="text" id="search-input" class="search-input" placeholder="Search by name or ID...">
+            <button id="btn-search" class="btn-action btn-red"><i class="ph ph-magnifying-glass"></i> Search</button>
+        </div>       
     </header>
 
     <main class="container">
