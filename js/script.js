@@ -106,7 +106,7 @@ const createPokemonCard = (pokemon) => {
     </div>
     
     <button class="btn-favorite ${isFav ? 'active' : ''}">
-        ${isFav ? '♥ Favorite' : '♡ Favorite'}
+        ${isFav ? ' Favorite' : ' Favorite'}
     </button>
   `;
 
