@@ -52,3 +52,60 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html> 
+<html lang="pt-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Web</title>
+    <link rel="icon" type="image/png" href="img/logopokedex.png">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <header class="header-home">
+        <div class="header-top">
+            <div class="logo-area">
+                <img src="img/logopokedex.png" alt="Logo Pokébola" class="logo">
+                <h1>
+                    <span class="poke-white">Poké</span><span class="dex-red">Dex</span>
+                </h1>
+            </div>
+            
+            <nav class="header-nav">
+                <button class="btn-action"><i class="ph ph-house"></i> Home</button>
+                <button id="btn-show-favs" class="btn-action"><i class="ph ph-heart"></i> My Favorites</button>
+                <button id="btn-theme-home" class="btn-action" title="Toggle Theme"><i class="ph ph-sun"></i></button>
+            </nav>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search by name or ID...">
+            <button id="btn-search" class="btn-action btn-red"><i class="ph ph-magnifying-glass"></i> Search</button>
+        </div>       
+    </header>
+
+    <main class="container">
+        
+        <div id="pokedex-grid" class="pokedex-grid">
+            <div id="loading" class="loading">Initializing the Pokédex...</div>
+        </div>
+
+        <div class="pagination">
+            <button id="btn-prev" class="btn-page">Previous</button>
+            <span id="page-info">Page 1 of 2</span>
+            <button id="btn-next" class="btn-page">Next</button>
+        </div>
+        
+    </main>
+
+</body>
+</html>
