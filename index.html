@@ -16,43 +16,42 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-  
-  <header class="header-home">
-    <div class="header-wrapper">
-      
-      <div class="header-top">
-        <div class="logo-area">
-          <img src="img/logopokedex.png" alt="Pokéball" class="logo">
-          <h1><span class="poke-white">Poké</span><span class="dex-red">Dex</span></h1>
+
+    <header class="header-home">
+        <div class="header-top">
+            <div class="logo-area">
+                <img src="img/logopokedex.png" alt="Logo Pokébola" class="logo">
+                <h1>
+                    <span class="poke-white">Poké</span><span class="dex-red">Dex</span>
+                </h1>
+            </div>
+            
+            <nav class="header-nav">
+                <button class="btn-action" id="btnHome"><i class="ph ph-house"></i> Home</button>
+                <button id="btn-show-favs" class="btn-action"><i class="ph ph-heart"></i> My Favorites</button>
+                <button id="btn-theme-home" class="btn-action" title="Toggle Theme"><i class="ph ph-sun"></i></button>
+            </nav>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search by name or ID...">
+            <button id="btn-search" class="btn-action btn-red"><i class="ph ph-magnifying-glass"></i> Search</button>
+        </div>       
+    </header>
+
+    <main class="container">
+        
+        <div id="pokedex-grid" class="pokedex-grid">
+            <div id="loading" class="loading">Initializing the Pokédex...</div>
+        </div>
+
+        <div class="pagination">
+            <button id="btn-prev" class="btn-page">Previous</button>
+            <span id="page-info">Page 1 of 2</span>
+            <button id="btn-next" class="btn-page">Next</button>
         </div>
         
-        <div class="nav-buttons">
-          <button class="btn-nav"><i class="fas fa-home"></i> Início</button>
-          <button class="btn-nav"><i class="fas fa-heart"></i> Meus Favoritos</button>
-        </div>
-      </div>
-    
-      <div class="search-area">
-        <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome ou ID......">
-        <button id="btn-search" class="btn-search-action">Buscar</button>
-      </div>
+    </main>
 
-    </div>
-  </header>
- 
-  <main class="container">
-   
-    <div id="pokemon-container"></div>
-  </main>
-
- 
-  <div id="pokemon-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-      <button id="close-modal" class="btn-close"><i class="fas fa-times"></i></button>
-      <div id="modal-details-container"></div>
-    </div>
-  </div>
-    
-  <script src="script.js"></script>
 </body>
 </html>

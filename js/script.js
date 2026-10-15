@@ -3,6 +3,7 @@ const pokedexGrid = document.getElementById('pokedex-grid');
 const searchInput = document.getElementById('search-input');
 const btnSearch = document.getElementById('btn-search');
 const btnShowFavs = document.getElementById('btn-show-favs');
+const btnHome = document.getElementById('btnHome');
 
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
@@ -64,6 +65,14 @@ const updatePaginationControls = (totalPages) => {
   
   btnNext.disabled = currentPage === totalPages || currentDisplayList.length === 0;
 };
+
+btnHome.addEventListener('click', () => {
+  searchInput.value = '';
+  showingOnlyFavs = false;
+  btnShowFavs.classList.remove('active-filter');
+  btnShowFavs.innerHTML = '<i class="ph-heart"></i>My Favorites';
+  aplicarFiltros();
+});
 
 btnPrev.addEventListener('click', () => {
   if (currentPage > 1) {
