@@ -1,6 +1,7 @@
 
 const pokedexGrid = document.getElementById('pokedex-grid');
 const searchInput = document.getElementById('search-input');
+const btnHome = document.getElementById('btn-home');
 const btnSearch = document.getElementById('btn-search');
 const btnShowFavs = document.getElementById('btn-show-favs');
 
@@ -9,7 +10,7 @@ const btnNext = document.getElementById('btn-next');
 const pageInfo = document.getElementById('page-info');
 
 const TOTAL_POKEMONS = 1025; 
-const ITEMS_PER_PAGE = 8;    
+const ITEMS_PER_PAGE = 32;    
 let currentPage = 1;         
 
 let allPokemons = [];        
@@ -174,6 +175,16 @@ btnShowFavs.addEventListener('click', () => {
   btnShowFavs.classList.toggle('active-filter');
   btnShowFavs.innerText = showingOnlyFavs ? '★ Mostrar Todos' : '★ Meus Favoritos';
   aplicarFiltros();
+});
+
+/* Botão do home */
+btnHome.addEventListener('click', () =>{
+  searchInput.value = '';
+  showingOnlyFavs = false;
+  btnShowFavs.classList.remove('active-filter');
+  currentDisplayList = [...allPokemons];
+  currentPage = 1;
+  renderPage();
 });
 
 fetchInitialList();
