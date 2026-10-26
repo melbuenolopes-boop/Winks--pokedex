@@ -99,9 +99,7 @@ const createPokemonCard = (pokemon) => {
   
 
   pokemonEl.innerHTML = `
-    <span class="pokemon-id">#${idFormatado}</span>
-    
-    <!-- Novo botão de favorito flutuante no topo direito -->
+    <span class="pokemon-id">#${idFormatado}</span> 
     <button class="btn-favorite ${isFav ? 'active' : ''}" title="Favorite">
         <i class="${isFav ? 'ph-fill' : 'ph'} ph-heart"></i>
     </button>
