@@ -27,7 +27,7 @@ body {
   margin-bottom: 24px;
 }
 
-.header-top {
+.header-top { /* Organiza o logo e os botões de navegação */
   display: flex;
   justify-content: space-between;
   align-items: center;

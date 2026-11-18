@@ -81,7 +81,7 @@ btnNext.addEventListener('click', () => {
   }
 });
 
-const createPokemonCard = (pokemon) => {
+const createPokemonCard = (pokemon) => { // Cria o card de cada Pokémon com suas informações e imagem.
   const idFormatado = pokemon.id.toString().padStart(3, '0');
   const nomeFormatado = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
