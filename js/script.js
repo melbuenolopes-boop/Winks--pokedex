@@ -73,7 +73,7 @@ btnPrev.addEventListener('click', () => {
   }
 });
 
-btnNext.addEventListener('click', () => {
+btnNext.addEventListener('click', () => { // Permite avançar para a próxima página da lista de Pokémon
   const totalPages = Math.ceil(currentDisplayList.length / ITEMS_PER_PAGE);
   if (currentPage < totalPages) {
     currentPage++;
