@@ -73,7 +73,7 @@ btnPrev.addEventListener('click', () => {
   }
 });
 
-btnNext.addEventListener('click', () => { // Permite avançar para a próxima página da lista de Pokémon
+btnNext.addEventListener('click', () => {
   const totalPages = Math.ceil(currentDisplayList.length / ITEMS_PER_PAGE);
   if (currentPage < totalPages) {
     currentPage++;
@@ -81,7 +81,7 @@ btnNext.addEventListener('click', () => { // Permite avançar para a próxima p�
   }
 });
 
-const createPokemonCard = (pokemon) => { // Cria o card de cada Pokémon com suas informações e imagem.
+const createPokemonCard = (pokemon) => { 
   const idFormatado = pokemon.id.toString().padStart(3, '0');
   const nomeFormatado = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
@@ -129,7 +129,7 @@ const createPokemonCard = (pokemon) => { // Cria o card de cada Pokémon com sua
     } else {
       favoritos.push(pokemon.id);
       btnFav.classList.add('active');
-      iconFav.className = 'ph-fill ph-heart'; // Coração preenchido
+      iconFav.className = 'ph-fill ph-heart'; 
     }
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
   });

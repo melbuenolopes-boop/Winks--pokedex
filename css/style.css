@@ -10,7 +10,7 @@ body {
     color: #ffffff; 
     padding-bottom: 64px; 
     transition: background-color 0.3s, color 0.3s;
-    display: block; /* Garante que o header fica no topo e o main embaixo! */
+    display: block; 
 }
 
 
@@ -27,7 +27,7 @@ body {
   margin-bottom: 24px;
 }
 
-.header-top { /* Organiza o logo e os botões de navegação */
+.header-top { 
   display: flex;
   justify-content: space-between;
   align-items: center;
