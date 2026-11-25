@@ -1,23 +1,30 @@
+//Botão voltar -------------> 1
 const btnBack = document.querySelector('.btn-back');
 btnBack.addEventListener('click', () => window.location.href = 'index.html');
+// <------------------ 1
 
+//Tema Claro/Escuro ----------> 2
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light-mode');
-}
+}// <------------------- 2
 
+//Cores dos tipos ----------> 3
 const typeColors = {
   normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
   grass: '#78C850', ice: '#98D8D8', fighting: '#C03028', poison: '#A040A0',
   ground: '#E0C068', flying: '#A890F0', psychic: '#F85888', bug: '#A8B820',
   rock: '#B8A038', ghost: '#705898', dragon: '#7038F8', dark: '#705848',
   steel: '#B8B8D0', fairy: '#EE99AC'
-};
+};// <-------------------- 3
 
+//Obtendo ID pela URL -----------> 4
 const urlParams = new URLSearchParams(window.location.search);
 const pokeId = urlParams.get('id');
+// < ------------------ 4
 
 if (!pokeId) window.location.href = 'index.html';
 
+//Carregar dethales dos pokemon -------> 5
 async function loadPokemonDetails() {
   try {
     const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
@@ -39,8 +46,9 @@ async function loadPokemonDetails() {
     console.error("Erro ao carregar detalhes", error);
     document.getElementById('loading-details').innerText = "Erro ao carregar os dados. Tente novamente.";
   }
-}
+}// <----------------- 5
 
+//Render das informações basicas --------> 6
 function renderBasicInfo(pokemon, species) {
   document.getElementById('poke-id').innerText = `#${pokemon.id.toString().padStart(3, '0')}`;
   document.getElementById('poke-name').innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
@@ -60,8 +68,9 @@ function renderBasicInfo(pokemon, species) {
     span.innerText = t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1);
     typesContainer.appendChild(span);
   });
-}
+} // <---------------------- 6
 
+//Render dos Status ---------------> 7
 function renderStats(stats) {
   const container = document.getElementById('poke-stats-container');
   const maxStat = 255; 
@@ -82,8 +91,9 @@ function renderStats(stats) {
       </div>
     `;
   });
-}
+} // <------------------ 7
 
+//Render Habilidades --------------> 8
 function renderAbilities(abilities) {
   const container = document.getElementById('poke-abilities');
   container.innerHTML = '';
@@ -95,8 +105,9 @@ function renderAbilities(abilities) {
       </div>
     `;
   });
-}
+}// <---------------- 8
 
+//Cadeia Evolutiva ---------------> 9
 async function renderEvolutions(url, currentName) {
   const res = await fetch(url);
   const evoData = await res.json();
@@ -146,6 +157,6 @@ async function renderEvolutions(url, currentName) {
 
     container.innerHTML += html;
   });
-}
+} // <------------------------ 9
 
 loadPokemonDetails();
