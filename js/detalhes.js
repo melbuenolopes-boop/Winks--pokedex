@@ -1,3 +1,4 @@
+//Botão voltar -------------> 1
 const btnBack = document.querySelector('.btn-back');
 btnBack.addEventListener('click', () => window.location.href = 'index.html');
 
@@ -5,6 +6,7 @@ if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light-mode');
 }
 
+//Tema Claro/Escuro ----------> 2
 const typeColors = {
   normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
   grass: '#78C850', ice: '#98D8D8', fighting: '#C03028', poison: '#A040A0',
