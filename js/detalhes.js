@@ -2,11 +2,12 @@
 const btnBack = document.querySelector('.btn-back');
 btnBack.addEventListener('click', () => window.location.href = 'index.html');
 
+//Tema Claro/Escuro ----------> 2
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light-mode');
 }
 
-//Tema Claro/Escuro ----------> 2
+//Cores dos tipos ----------> 3
 const typeColors = {
   normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
   grass: '#78C850', ice: '#98D8D8', fighting: '#C03028', poison: '#A040A0',
@@ -15,11 +16,13 @@ const typeColors = {
   steel: '#B8B8D0', fairy: '#EE99AC'
 };
 
+//Obtendo ID pela URL -----------> 4
 const urlParams = new URLSearchParams(window.location.search);
 const pokeId = urlParams.get('id');
 
 if (!pokeId) window.location.href = 'index.html';
 
+//Carregar dethales dos pokemon -------> 5
 async function loadPokemonDetails() {
   try {
     const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
@@ -43,6 +46,7 @@ async function loadPokemonDetails() {
   }
 }
 
+//Render das informações basicas --------> 6
 function renderBasicInfo(pokemon, species) {
   document.getElementById('poke-id').innerText = `#${pokemon.id.toString().padStart(3, '0')}`;
   document.getElementById('poke-name').innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
@@ -63,7 +67,7 @@ function renderBasicInfo(pokemon, species) {
     typesContainer.appendChild(span);
   });
 }
-
+ //Render dos Status ---------------> 7
 function renderStats(stats) {
   const container = document.getElementById('poke-stats-container');
   const maxStat = 255; 
@@ -85,7 +89,7 @@ function renderStats(stats) {
     `;
   });
 }
-
+ //Render Habilidades --------------> 8
 function renderAbilities(abilities) {
   const container = document.getElementById('poke-abilities');
   container.innerHTML = '';
@@ -99,6 +103,7 @@ function renderAbilities(abilities) {
   });
 }
 
+ //Cadeia Evolutiva ---------------> 9
 async function renderEvolutions(url, currentName) {
   const res = await fetch(url);
   const evoData = await res.json();
